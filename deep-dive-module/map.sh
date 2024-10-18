@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-keyFile=${XDG_DATA_HOME:-~/.local/share}/google-api.key
+keyFile=${XDG_DATA_HOME:-~/.local/share}/google-api/key
 
 if [[ ! -f "$keyFile" ]]; then
     mkdir -pv "$(basename "$keyFile")"
