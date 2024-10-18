@@ -25,4 +25,3 @@ stdenv.mkDerivation {
     cp -v {hello,world}.txt $out
   '';
 }
-
