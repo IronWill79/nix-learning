@@ -26,7 +26,7 @@ curlArgs=(
     --data-urlencode address="$1"
 )
 
-#echo curl ''${curlArgs[@]@Q} >&2
+echo curl ''${curlArgs[@]@Q} >&2
 
 curlArgs+=(--data-urlencode key="$key")
 

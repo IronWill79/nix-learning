@@ -4,9 +4,9 @@ set -euo pipefail
 keyFile=${XDG_DATA_HOME:-~/.local/share}/google-api/key
 
 if [[ ! -f "$keyFile" ]]; then
-    mkdir -pv "$(basename "$keyFile")"
+    mkdir -p "$(basename "$keyFile")"
     echo "No Google API key found in $keyFile" >&2
-    echo "To get one, see https://developers.google.com/maps/documentation/maps-static/start#before-you-begin" >&2
+    echo "For getting one, see https://developers.google.com/maps/documentation/maps-static/start#before-you-begin" >&2
     exit 1
 fi
 
