@@ -2,7 +2,7 @@
 {
   options = {
     scripts.output = lib.mkOption {
-      type = lib.types.lines;
+      type = lib.types.package;
     };
   };
 
