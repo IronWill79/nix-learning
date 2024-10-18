@@ -1,5 +1,14 @@
 { lib, config, ... }:
 let
+
+  # Either a color name, `0xRRGGBB` or `0xRRGGBBAA`
+  colorType = lib.types.either
+    (lib.types.strMatching "0x[0-9A-Fa-f]{6}[0-9A-Fa-f]{2}?")
+    (lib.types.enum [
+      "black" "brown" "green" "purple" "yellow"
+      "blue" "gray" "orange" "red" "white"
+    ]);
+
   pathType = lib.types.submodule {
     options = {
       locations = lib.mkOption {
@@ -18,6 +27,16 @@ let
       weight = lib.mkOption {
         type = lib.types.ints.between 1 20;
         default = 5;
+      };
+
+      color = lib.mkOption {
+        type = colorType;
+        default = "blue";
+      };
+
+      geodesic = lib.mkOption {
+        type = lib.types.bool;
+        default = false;
       };
     };
   };
@@ -60,6 +79,8 @@ in
             attributes =
               [
                 "weight:${toString path.style.weight}"
+                "color:${path.style.color}"
+                "geodesic:${lib.boolToString path.style.geodesic}"
               ]
               ++ builtins.map attrForLocation path.locations;
           in ''path="${lib.concatStringsSep "|" attributes}"'';

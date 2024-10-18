@@ -70,6 +70,7 @@
           style.size = "large";
         };
         pathStyle = {
+          geodesic = true;
           weight = 20;
         };
       };
