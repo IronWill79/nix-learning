@@ -62,6 +62,9 @@
         departure = {
           location = "Brisbane, Qld";
         };
+        arrival = {
+          location = "Los Angeles, California";
+        };
       };
     };
   };

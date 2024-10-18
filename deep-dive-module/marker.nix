@@ -46,14 +46,24 @@ let
         type = markerType;
         default = {};
       };
+      arrival = lib.mkOption {
+        type = markerType;
+        default = {};
+      };
     };
     config = {
       departure.style.label = lib.mkDefault
+        (firstUpperAlnum name);
+      arrival.style.label = lib.mkDefault
         (firstUpperAlnum name);
     };
   });
 
 in {
+
+  imports = [
+    ./path.nix
+  ];
 
   options = {
     users = lib.mkOption {
@@ -69,7 +79,7 @@ in {
     map.markers = lib.filter
       (marker: marker.location != null)
       (lib.concatMap (user: [
-        user.departure
+        user.departure user.arrival
       ]) (lib.attrValues config.users));
 
     map.center = lib.mkIf
