@@ -1,3 +1,5 @@
+/nixos
+
 To create a nixos configuration that is used for the NixOS minimal ISO image:
 
 ```sh
@@ -30,4 +32,17 @@ Running the virtual machine
 
 ```sh
 QEMU_KERNEL_PARAMS=console=tty50 ./result/bin/run-nixos-vm -nographic; reset
+```
+
+To create a nixos configuration with Gnome:
+
+```sh
+  nix-shell -I nixpkgs=channel:nixos-24.05 -p "$(cat <<EOF
+    let
+      pkgs = import <nixpkgs> { config = {}; overlays = []; };
+      iso-config = pkgs.path + /nixos/modules/installer/cd-dvd/installation-cd-graphical-gnome.nix;
+      nixos = pkgs.nixos iso-config;
+    in nixos.config.system.build.nixos-generate-config
+  EOF
+  )"
 ```
