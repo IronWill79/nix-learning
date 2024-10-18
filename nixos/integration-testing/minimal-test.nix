@@ -20,7 +20,6 @@ pkgs.testers.runNixOSTest {
   
   testScript = { nodes, ... }: ''
     machine.wait_for_unit("default.target")
-    machine.succeed("su -- root -c 'echo `system-features = nixos-test benchmark big-parallel kvm` >> /etc/nix/nix.conf'")
     machine.succeed("su -- ironwill -c 'which firefox'")
     machine.fail("su -- root -c 'which firefox'")
   '';
