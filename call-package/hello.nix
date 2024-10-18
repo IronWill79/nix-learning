@@ -1,4 +1,7 @@
-{ writeShellScriptBin }:
+{
+  writeShellScriptBin,
+  audience ? "world",
+}:
 writeShellScriptBin "hello" ''
-  echo "Hello, World!";
+  echo "Hello, ${audience}!";
 ''

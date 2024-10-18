@@ -3,5 +3,5 @@ let
   pkgs = import nixpkgs { config = {}; overlays = []; };
 in
 {
-  hello = pkgs.callPackage ./hello.nix { };
+  hello = pkgs.callPackage ./hello.nix { audience = "people"; };
 }
