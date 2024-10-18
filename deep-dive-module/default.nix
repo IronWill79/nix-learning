@@ -61,9 +61,16 @@
       ironwill = {
         departure = {
           location = "Brisbane, Qld";
+          style.color = "red";
+          style.size = "medium";
         };
         arrival = {
           location = "Los Angeles, California";
+          style.color = "green";
+          style.size = "large";
+        };
+        pathStyle = {
+          weight = 20;
         };
       };
     };
