@@ -56,5 +56,13 @@
           lib.escapeShellArg config.map.center
         })\"")
     ];
+
+    users = {
+      ironwill = {
+        departure = {
+          location = "Brisbane, Qld";
+        };
+      };
+    };
   };
 }
