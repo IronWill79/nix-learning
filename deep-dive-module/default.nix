@@ -5,4 +5,8 @@
       type = lib.types.lines;
     };
   };
+
+  config = {
+    scripts.output = 42;
+  };
 }
