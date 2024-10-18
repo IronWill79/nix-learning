@@ -1,7 +1,15 @@
 { stdenv, lib }:
 let
   fs = lib.fileset;
-  sourceFiles =
+  sourceFiles = fs.unions [
+    ./hello.txt
+    ./world.txt
+    ./build.sh
+    (fs.fileFilter
+      (file: file.hasExt "c" || file.hasExt "h")
+      ./src
+    )
+  ];
     fs.difference
       ./.
       (fs.unions [
@@ -20,7 +28,6 @@ stdenv.mkDerivation {
     fileset = sourceFiles;
   };
   postInstall = ''
-    mkdir $out
-    cp -v {hello,world}.txt $out
+    cp -vr . $out
   '';
 }
