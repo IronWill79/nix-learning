@@ -46,3 +46,16 @@ To create a nixos configuration with Gnome:
   EOF
   )"
 ```
+
+Building a bootable ISO image - /nixos/bootable-iso
+
+```sh
+NIX_PATH=nixpkgs=https://github.com/NixOS/nixpkgs/archive/commit.tar.gz nix-shell -p nixos-generators --run "nixos-generate --format iso --configuration ./myimage.nix -o result"
+```
+
+Copy the new image to the USB stick, replacing `sdX` with the name of your device:
+
+```sh
+dd if=result/iso/*.iso of=/dev/sdX status=progress
+sync
+```
