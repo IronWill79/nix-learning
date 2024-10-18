@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ pkgs, lib, ... }:
 {
   options = {
     scripts.output = lib.mkOption {
@@ -7,8 +7,12 @@
   };
 
   config = {
-    scripts.output = ''
-      ./map.sh size=640x640 scale=2 | feh -
-    '';
+    scripts.output = pkgs.writeShellApplication {
+      name = "map";
+      runtimeInputs = with pkgs; [ curl feh ];
+      text = ''
+        ${./map.sh} size=640x640 scale=2 | feh -
+      '';
+    };
   };
 }
