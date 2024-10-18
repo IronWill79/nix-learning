@@ -1,7 +1,7 @@
 { stdenv, lib }:
 let
   fs = lib.fileset;
-  sourceFiles = ./.;
+  sourceFiles = fs.difference ./. ./result;
 in
 
 fs.trace sourceFiles
