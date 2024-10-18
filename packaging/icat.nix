@@ -17,4 +17,9 @@ stdenv.mkDerivation {
   };
 
   buildInputs = [ imlib2 xorg.libX11 ];
+
+  installPhase = ''
+    mkdir -p $out/bin
+    cp icat $out/bin
+  '';
 }
