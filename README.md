@@ -59,3 +59,17 @@ Copy the new image to the USB stick, replacing `sdX` with the name of your devic
 dd if=result/iso/*.iso of=/dev/sdX status=progress
 sync
 ```
+
+Building and running Docker images - /nixos/docker
+
+To build and load in Docker, run:
+
+```sh
+docker load < $(nix-build hello-docker.nix)
+```
+
+To run a container of the image, run:
+
+```sh
+docker run -t hello-docker:<tag>
+```
