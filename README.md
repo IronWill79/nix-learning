@@ -19,3 +19,15 @@ Then in the `nix-shell`, run:
 
 Note: without the --dir, the generated configuration file is written to
 `/etc/nixos/configuration.nix`, which typically requires `sudo` permissions.
+
+To create a NixOS virtual machine with `nix-build`, run:
+
+```sh
+nix-build '<nixpkgs/nixos>' -A vm -I nixpkgs=channel:nixos-24.05 -I nixos-config=./configuration.nix
+```
+
+Running the virtual machine
+
+```sh
+QEMU_KERNEL_PARAMS=console=tty50 ./result/bin/run-nixos-vm -nographic; reset
+```
