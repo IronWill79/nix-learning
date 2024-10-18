@@ -18,6 +18,12 @@ let
     };
   };
 
+  style.label = lib.mkOption {
+    type = lib.types.nullOr
+      (lib.types.strMatching "[A-Z0-9]");
+    default = null;
+  };
+
 in {
 
   options = {
@@ -46,9 +52,18 @@ in {
       null;
 
     requestParams = let
-      paramForMarker =
-        builtins.map (marker: "$(${config.scripts.geocode}/bin/geocode ${
-          lib.escapeShellArg marker.location})") config.map.markers;
-    in [ "markers=\"${lib.concatStringsSep "|" paramForMarker}\"" ];
+      paramForMarker = marker:
+        let
+          attributes =
+            lib.optional (marker.style.label != null)
+            "label:${marker.style.label}"
+            ++ [
+              "$(${config.scripts.geocode}/bin/geocode $(
+                lib.escapeShellArg marker.location
+              ))"
+            ];
+          in "markers=\"${lib.concatStringsSep "|" attributes}\"";
+      in
+        builtins.map paramForMarker config.map.markers;
   };
 }
