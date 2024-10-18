@@ -32,7 +32,7 @@ curlArgs+=(--data-urlencode key="$key")
 
 if status=$(curl "${curlArgs[@]}"); then
     if [[ "$status" == 200 ]]; then
-        result=$(jq -r '.results[0].geometry.location as $loc | "\($loc | .lat),\($loc | .lng)"' "$output"
+        result=$(jq -r '.results[0].geometry.location as $loc | "\($loc | .lat),\($loc | .lng)"' "$output")
         if ! [[ $result =~ $result_regex ]]; then
             echo "Got a bad result of: '$result'" >&2
             exit 1
