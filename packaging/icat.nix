@@ -1,6 +1,7 @@
 {
   stdenv,
   fetchFromGitHub,
+  imlib2,
 }:
 
 stdenv.mkDerivation {
@@ -13,4 +14,6 @@ stdenv.mkDerivation {
     rev = "v0.5";
     sha256 = "0wyy2ksxp95vnh71ybj1bbmqd5ggp13x3mk37pzr99ljs9awy8ka";
   };
+
+  buildInputs = [ imlib2 ];
 }
