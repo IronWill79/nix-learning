@@ -1,0 +1,41 @@
+{
+  "pins": {
+    "disko": {
+      "type": "GitRelease",
+      "repository": {
+        "type": "GitHub",
+        "owner": "nix-community",
+        "repo": "disko"
+      },
+      "pre_releases": false,
+      "version_upper_bound": null,
+      "release_prefix": null,
+      "version": "v1.8.2",
+      "revision": "0a97c6683ecb8d92ab0ce4c3c39e896e4a3fe388",
+      "url": "https://api.github.com/repos/nix-community/disko/tarball/v1.8.2",
+      "hash": "1xivgibk1fa07z4xqxpyha6yyb0pmahf52caf1kgh8zxr231ai1v"
+    },
+    "nixos-anywhere": {
+      "type": "GitRelease",
+      "repository": {
+        "type": "GitHub",
+        "owner": "nix-community",
+        "repo": "nixos-anywhere"
+      },
+      "pre_releases": false,
+      "version_upper_bound": null,
+      "release_prefix": null,
+      "version": "1.4.0",
+      "revision": "d5ced5dc30c7a14587f002a1ab67f5201911f03d",
+      "url": "https://api.github.com/repos/nix-community/nixos-anywhere/tarball/1.4.0",
+      "hash": "0l8sbapn7lz6qgglrv4vh6m2qpq09ngk5ypmvj787fmrmripmk5j"
+    },
+    "nixpkgs": {
+      "type": "Channel",
+      "name": "nixpkgs-unstable",
+      "url": "https://releases.nixos.org/nixpkgs/nixpkgs-24.11pre693341.7881fbfd2e3e/nixexprs.tar.xz",
+      "hash": "1pvpzd6hhf738lz2wfmpa7jqf9zpl3i6qihm4x8qa14mdcl8h1dx"
+    }
+  },
+  "version": 3
+}
